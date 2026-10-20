@@ -100,6 +100,32 @@ figcaption {
   border-left: 2px solid var(--cor-verde-claro);
 }
 
+/* Ficha técnica: termo e valor em duas colunas, com régua entre as linhas */
+.ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 var(--espaco-6);
+  margin: 0;
+}
+
+.ficha dt,
+.ficha dd {
+  margin: 0;
+  padding-block: var(--espaco-2);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.ficha dt {
+  color: var(--cor-texto-suave);
+  font-size: var(--texto-legenda);
+}
+
+.ficha dd {
+  color: var(--cor-texto);
+  font-size: var(--texto-legenda);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Botão principal: verde do mostrador, contorno claro (o verde sozinho dá só 2,3:1 contra o fundo) */
 .botao {
   display: inline-flex;
