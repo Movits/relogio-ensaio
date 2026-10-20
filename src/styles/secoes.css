@@ -299,9 +299,16 @@ figcaption {
 
 .abertura--animada {
   display: grid;
-  align-content: center;
+  align-content: start;
   min-height: 100svh;
-  padding-block: var(--espaco-6);
+  padding-block: var(--espaco-12) var(--espaco-6);
+}
+
+@media (min-width: 48rem) {
+  .abertura--animada {
+    align-content: center;
+    padding-block: var(--espaco-6);
+  }
 }
 
 /* Uma coluna só, centrada, com a largura do quadro. 25rem = o que sobra de texto acima e abaixo dele. */
