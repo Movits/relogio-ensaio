@@ -38,9 +38,9 @@ function montar(secao, { hero, explodido, tracos, rotulo, legenda, passos }) {
     },
   })
 
-  // 0–4: o relógio fechado sai e o calibre aberto entra, no mesmo quadro.
-  tl.fromTo(hero, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.96, duration: 4 }, 0)
-    .fromTo(explodido, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 4 }, 0)
+  // 0–4: o relógio fechado sai (0–2) e só então o calibre aberto entra (2–4), sem as duas fotos sobrepostas.
+  tl.fromTo(hero, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.96, duration: 2 }, 0)
+    .fromTo(explodido, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 2 }, 2)
     .fromTo(legenda, { opacity: 0 }, { opacity: 1, duration: 2 }, 2)
     // 4–6: o traço marca o movimento.
     .fromTo(tracos, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2 }, 4)
