@@ -142,11 +142,20 @@ figcaption {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: filter var(--duracao) var(--curva);
+  transition:
+    filter var(--duracao) var(--curva),
+    transform 120ms var(--curva);
 }
 
-.botao:hover {
-  filter: brightness(1.15);
+/* Brilho só com mouse: no celular o hover "gruda" depois do toque */
+@media (hover: hover) and (pointer: fine) {
+  .botao:hover {
+    filter: brightness(1.15);
+  }
+}
+
+.botao:active {
+  transform: scale(0.98);
 }
 
 /* Hero */
