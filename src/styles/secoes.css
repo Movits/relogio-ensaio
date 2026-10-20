@@ -100,6 +100,32 @@ figcaption {
   border-left: 2px solid var(--cor-verde-claro);
 }
 
+/* Ficha técnica: termo e valor em duas colunas, com régua entre as linhas */
+.ficha {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0 var(--espaco-6);
+  margin: 0;
+}
+
+.ficha dt,
+.ficha dd {
+  margin: 0;
+  padding-block: var(--espaco-2);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.ficha dt {
+  color: var(--cor-texto-suave);
+  font-size: var(--texto-legenda);
+}
+
+.ficha dd {
+  color: var(--cor-texto);
+  font-size: var(--texto-legenda);
+  font-variant-numeric: tabular-nums;
+}
+
 /* Botão principal: verde do mostrador, contorno claro (o verde sozinho dá só 2,3:1 contra o fundo) */
 .botao {
   display: inline-flex;
@@ -116,11 +142,20 @@ figcaption {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: filter var(--duracao) var(--curva);
+  transition:
+    filter var(--duracao) var(--curva),
+    transform 120ms var(--curva);
 }
 
-.botao:hover {
-  filter: brightness(1.15);
+/* Brilho só com mouse: no celular o hover "gruda" depois do toque */
+@media (hover: hover) and (pointer: fine) {
+  .botao:hover {
+    filter: brightness(1.15);
+  }
+}
+
+.botao:active {
+  transform: scale(0.98);
 }
 
 /* Hero */
@@ -195,6 +230,11 @@ figcaption {
   font: inherit;
 }
 
+.formulario input::placeholder {
+  color: var(--cor-texto-suave);
+  opacity: 1;
+}
+
 .formulario input[aria-invalid='true'] {
   border-color: var(--cor-erro);
 }
@@ -265,17 +305,50 @@ figcaption {
   position: relative;
 }
 
-.abertura__hero,
-.abertura__traco,
-.abertura__rotulo {
+.abertura__hero {
   display: none;
+}
+
+/* Traço e rótulo marcam o movimento no explodido; na composição estática ficam à mostra, já traçados */
+.abertura__traco {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--cor-verde-claro);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.abertura__rotulo {
+  display: block;
+  position: absolute;
+  top: 12.2%;
+  left: 66%;
+  transform: translateY(-50%);
+  padding: var(--espaco-1) var(--espaco-2);
+  border: 1px solid var(--cor-verde-claro);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-size: var(--texto-legenda);
 }
 
 .abertura--animada {
   display: grid;
-  align-content: center;
+  align-content: start;
   min-height: 100svh;
-  padding-block: var(--espaco-6);
+  padding-block: var(--espaco-12) var(--espaco-6);
+}
+
+@media (min-width: 48rem) {
+  .abertura--animada {
+    align-content: center;
+    padding-block: var(--espaco-6);
+  }
 }
 
 /* Uma coluna só, centrada, com a largura do quadro. 25rem = o que sobra de texto acima e abaixo dele. */
@@ -294,6 +367,11 @@ figcaption {
 .abertura--animada .par > *,
 .abertura--animada .texto > * {
   margin: 0;
+}
+
+/* Linha de leitura confortável (cerca de 70 caracteres) no parágrafo de abertura */
+.abertura--animada .texto > p:not(.eyebrow):not(.legenda) {
+  max-width: 40rem;
 }
 
 .abertura--animada .abertura__figura {
@@ -328,32 +406,9 @@ figcaption {
   will-change: transform, opacity;
 }
 
-/* Traço de SVG: o JS anima o stroke-dashoffset (pathLength="1" no HTML) */
+/* Traço de SVG: o JS anima o stroke-dashoffset (pathLength="1" no HTML); a animação parte do traço apagado */
 .abertura--animada .abertura__traco {
-  display: block;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: var(--cor-verde-claro);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-dasharray: 1;
   stroke-dashoffset: 1;
-}
-
-.abertura--animada .abertura__rotulo {
-  display: block;
-  position: absolute;
-  top: 12.2%;
-  left: 66%;
-  transform: translateY(-50%);
-  padding: var(--espaco-1) var(--espaco-2);
-  border: 1px solid var(--cor-verde-claro);
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
-  font-size: var(--texto-legenda);
 }
 
 /* Os 4 passos ocupam o mesmo lugar; o JS acende um de cada vez */
