@@ -1,0 +1,19 @@
+# Texto sempre com fim de linha LF no repositório (Windows, macOS e Linux iguais)
+* text=auto eol=lf
+
+# Binários: o Git não mexe no conteúdo
+*.webp binary
+*.avif binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
+*.zip binary

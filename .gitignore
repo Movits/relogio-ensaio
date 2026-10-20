@@ -1,0 +1,27 @@
+# Gerado automaticamente (não versionar)
+node_modules/
+dist/
+*.log
+
+# Saídas de ferramentas locais
+test-results/
+playwright-report/
+# capturas da skill /review-landing (a barra no começo é de propósito: sem ela,
+# o Git ignoraria também a própria skill em .claude/skills/review-landing/)
+/review-landing/
+
+# Imagens originais, antes de otimizar (pesadas; as versões finais vão para public/img)
+_originais/
+
+# Segredos e configurações pessoais (nunca vão para o Git)
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Sistema e editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

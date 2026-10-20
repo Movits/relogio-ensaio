@@ -1,0 +1,46 @@
+/*
+  Tokens: as decisões de design do site, num lugar só.
+  O resto do CSS usa só estas variáveis (var(--cor-texto), var(--espaco-3)...), nunca cor ou medida solta.
+  Para mudar a cara do site, mude aqui.
+
+  A PREENCHER quando a turma escolher o tema e a direção visual:
+  [ ] cores (fundo, superfície, texto, texto suave, destaque do botão, borda) com contraste de pelo menos 4,5:1
+  [ ] fontes de título e de texto (arquivos .woff2 em public/fonts/, sem CDN)
+  [ ] escala de tamanhos de texto
+  [ ] cantos e duração das animações
+  Os valores abaixo são neutros, só para a página funcionar até lá.
+*/
+
+:root {
+  /* Cores */
+  --cor-fundo: #ffffff;
+  --cor-superficie: #f2f2f2;
+  --cor-texto: #111111;
+  --cor-texto-suave: #555555;
+  --cor-destaque: #111111; /* só o botão principal */
+  --cor-borda: #d0d0d0;
+  --cor-foco: #1a5fd0;
+
+  /* Tipografia */
+  --fonte-titulo: system-ui, sans-serif;
+  --fonte-texto: system-ui, sans-serif;
+  --texto-p: 1rem; /* 16 px: nunca menor no corpo */
+  --texto-m: 1.25rem;
+  --texto-g: clamp(1.75rem, 4vw, 2.5rem);
+  --texto-display: clamp(2.5rem, 8vw, 5rem);
+  --entrelinha: 1.6;
+
+  /* Espaço (múltiplos de 8 px) */
+  --espaco-1: 0.5rem;
+  --espaco-2: 1rem;
+  --espaco-3: 1.5rem;
+  --espaco-4: 2rem;
+  --espaco-6: 3rem;
+  --espaco-8: 4rem;
+  --largura-maxima: 72rem;
+
+  /* Forma e movimento */
+  --canto: 4px;
+  --duracao: 300ms;
+  --curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
