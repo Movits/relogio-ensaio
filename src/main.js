@@ -3,11 +3,6 @@ import './styles/tokens.css'
 import './styles/base.css'
 import './styles/secoes.css'
 
-// O GSAP já está instalado. Quando a primeira animação entrar, descomente:
-// import { gsap } from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// gsap.registerPlugin(ScrollTrigger)
-
 import { init as initHero } from './sections/hero.js'
 import { init as initAbertura } from './sections/abertura.js'
 import { init as initMostrador } from './sections/mostrador.js'

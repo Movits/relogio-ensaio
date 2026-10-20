@@ -29,7 +29,7 @@
         </figure>
       </section>
 
-      <section id="abertura" aria-labelledby="abertura-titulo">
+      <section id="abertura" class="abertura" aria-labelledby="abertura-titulo">
         <div class="par">
           <div class="texto">
             <p class="eyebrow">01 · Movimento</p>
@@ -43,9 +43,19 @@
             </ol>
             <p class="legenda">Origem do movimento do Calibre Norte: a confirmar.</p>
           </div>
-          <figure>
-            <img src="/img/explodido.webp" width="1600" height="900" loading="lazy" decoding="async"
-              alt="Peças de um relógio mecânico separadas e alinhadas: cristal, mostrador escuro com ponteiros, movimento com engrenagens e rubis, caixa e fundo, em acabamento dourado." />
+          <figure class="abertura__figura">
+            <div class="abertura__quadro">
+              <!-- Só aparece com a animação ligada (o relógio fechado, de onde a abertura parte); sem ela fica oculta -->
+              <img class="abertura__hero" src="/img/hero.webp" width="1600" height="900" loading="lazy" decoding="async"
+                alt="" aria-hidden="true" />
+              <img class="abertura__explodido" src="/img/explodido.webp" width="1600" height="900" loading="lazy" decoding="async"
+                alt="Peças de um relógio mecânico separadas e alinhadas: cristal, mostrador escuro com ponteiros, movimento com engrenagens e rubis, caixa e fundo, em acabamento dourado." />
+              <svg class="abertura__traco" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+                <ellipse cx="763" cy="390" rx="180" ry="215" pathLength="1" />
+                <path d="M 879 225 L 1056 110" pathLength="1" />
+              </svg>
+              <span class="abertura__rotulo" aria-hidden="true">Movimento</span>
+            </div>
             <figcaption>Fig. 2 · Por dentro do calibre. Ilustração em outro acabamento (dourado): a caixa do Calibre Norte é de aço.</figcaption>
           </figure>
         </div>

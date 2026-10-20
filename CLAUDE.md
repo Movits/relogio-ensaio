@@ -16,7 +16,7 @@ Site de página única de lançamento da Calibre Norte (relógio mecânico autom
 
 - `index.html`: uma `<section id>` por parte, na ordem da página: `hero`, `abertura` (o relógio por dentro), `mostrador`, `pulseiras`, `na-caixa`, `lista-espera`.
 - `src/main.js`: importa tokens.css e base.css e chama o `init()` de cada seção.
-- `src/sections/<id>.js`: um arquivo por seção, exportando `init()`. Sai sem erro se a seção não existir. Hoje são esqueletos vazios.
+- `src/sections/<id>.js`: um arquivo por seção, exportando `init()`. Sai sem erro se a seção não existir. `abertura.js` (o relógio se abre) e `lista-espera.js` estão implementados; os outros ainda são esqueletos vazios.
 - `src/lib/`: funções pequenas usadas por várias seções (ex.: "reduzir movimento ligado?").
 - `src/styles/`: `tokens.css` (cores, fontes, tamanhos) e `base.css`. Estilos de seção vão em arquivo próprio, sempre com os tokens.
 - `public/` (`img/`, `fonts/`, `frames/`): ativos estáticos.
@@ -28,7 +28,7 @@ Site de página única de lançamento da Calibre Norte (relógio mecânico autom
 - Nada novo no `package.json` (sem bibliotecas extras nem CDN) sem pedir ao Roberto.
 - Caminhos de imagem dentro do JS usam `import.meta.env.BASE_URL`; `/img/...` fixo dá 404 no Pages.
 - O CSS só esconde algo para animar se o `<html>` tiver a classe `js` (o `index.html` a adiciona). Sem JS e com `prefers-reduced-motion: reduce`, o conteúdo fica visível e estático.
-- Animação do relógio se abrindo: `gsap.matchMedia()` com `(prefers-reduced-motion: no-preference)`, ScrollTrigger com pin e scrub, `svh` em vez de `vh`. O GSAP está instalado, mas o import em `main.js` está comentado até a primeira animação.
+- Animação do relógio se abrindo (`src/sections/abertura.js`): `gsap.matchMedia()` com `(prefers-reduced-motion: no-preference)`, ScrollTrigger com pin (+=250%) e scrub, só transform, opacity e o traço do SVG, `svh` em vez de `vh`. O import do GSAP fica nesse arquivo. A composição estática é o padrão no HTML/CSS; a classe `abertura--animada` (posta pelo JS) liga o palco. Se mexer no texto da seção, confira se ela ainda cabe em 375×667 durante o pin.
 - Lista de espera: só validação no navegador e confirmação marcada como demonstração. Sem `fetch`, storage, cookie nem rastreador.
 - Pendências do brief (preço, data, origem do movimento, resistência à água, tamanho da caixa, materiais das pulseiras, concorrentes): mostrar "a confirmar" ou omitir. Nunca inventar número.
 - Tom: sóbrio, preciso, "você". Proibidos: "luxo", "exclusivo", "promoção", "imperdível", contagem regressiva, exclamações em série.

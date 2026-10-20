@@ -255,3 +255,126 @@ figcaption {
     order: 0;
   }
 }
+
+/*
+  O relógio se abre (#abertura).
+  Padrão = composição estática: explodido, legenda e passos visíveis (sem JS ou com movimento reduzido).
+  O JS só põe .abertura--animada quando o palco fixado (pin) vai rodar; daqui sai o que a animação precisa.
+*/
+.abertura__quadro {
+  position: relative;
+}
+
+.abertura__hero,
+.abertura__traco,
+.abertura__rotulo {
+  display: none;
+}
+
+.abertura--animada {
+  display: grid;
+  align-content: center;
+  min-height: 100svh;
+  padding-block: var(--espaco-6);
+}
+
+/* Uma coluna só, centrada, com a largura do quadro. 25rem = o que sobra de texto acima e abaixo dele. */
+.abertura--animada .par {
+  grid-template-columns: 1fr;
+  gap: var(--espaco-3);
+  width: min(100%, max(20rem, calc((100svh - 25rem) * 16 / 9)));
+  margin-inline: auto;
+}
+
+/* O texto vira itens da própria grade, para o quadro ficar entre o título e os passos */
+.abertura--animada .texto {
+  display: contents;
+}
+
+.abertura--animada .par > *,
+.abertura--animada .texto > * {
+  margin: 0;
+}
+
+.abertura--animada .abertura__figura {
+  order: 1;
+}
+
+.abertura--animada .etapas {
+  order: 2;
+}
+
+.abertura--animada .texto > .legenda {
+  order: 3;
+}
+
+.abertura--animada .abertura__quadro {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--canto);
+  background: var(--cor-fundo);
+}
+
+.abertura--animada .abertura__quadro img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  object-fit: cover;
+  will-change: transform, opacity;
+}
+
+/* Traço de SVG: o JS anima o stroke-dashoffset (pathLength="1" no HTML) */
+.abertura--animada .abertura__traco {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--cor-verde-claro);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.abertura--animada .abertura__rotulo {
+  display: block;
+  position: absolute;
+  top: 12.2%;
+  left: 66%;
+  transform: translateY(-50%);
+  padding: var(--espaco-1) var(--espaco-2);
+  border: 1px solid var(--cor-verde-claro);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-size: var(--texto-legenda);
+}
+
+/* Os 4 passos ocupam o mesmo lugar; o JS acende um de cada vez */
+.abertura--animada .etapas {
+  display: grid;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: etapa;
+}
+
+.abertura--animada .etapas li {
+  grid-area: 1 / 1;
+  counter-increment: etapa;
+}
+
+.abertura--animada .etapas li + li {
+  margin-top: 0;
+}
+
+.abertura--animada .etapas li::before {
+  content: counter(etapa) ' de 4 · ';
+  color: var(--cor-verde-claro);
+  font-variant-numeric: tabular-nums;
+}
