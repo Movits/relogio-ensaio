@@ -329,6 +329,11 @@ figcaption {
   margin: 0;
 }
 
+/* Linha de leitura confortável (cerca de 70 caracteres) no parágrafo de abertura */
+.abertura--animada .texto > p:not(.eyebrow):not(.legenda) {
+  max-width: 40rem;
+}
+
 .abertura--animada .abertura__figura {
   order: 1;
 }
