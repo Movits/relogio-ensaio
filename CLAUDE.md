@@ -6,7 +6,7 @@ Site de página única de lançamento da Calibre Norte (relógio mecânico autom
 
 ## Comandos
 
-- `npm run dev`: servidor de desenvolvimento em `http://localhost:5173/meu-site/` (a base entra no endereço).
+- `npm run dev`: servidor de desenvolvimento em `http://localhost:5173/relogio-ensaio/` (a base entra no endereço).
 - `npm run build`: build de produção em `dist/` (precisa sair com código 0).
 - `npm run preview`: serve o `dist/` (porta 4173).
 - `npm test`: Playwright. Faz o build, sobe o preview na porta 4174 e usa o Google Chrome instalado (sem `npx playwright install`).
@@ -21,7 +21,7 @@ Site de página única de lançamento da Calibre Norte (relógio mecânico autom
 - `src/styles/`: `tokens.css` (cores, fontes, tamanhos) e `base.css`. Estilos de seção vão em arquivo próprio, sempre com os tokens.
 - `public/` (`img/`, `fonts/`, `frames/`): ativos estáticos.
 - `docs/`: `brief.md`, `requisitos.md` e `plano.md` (a fonte da verdade do conteúdo e dos passos).
-- `vite.config.js` define `base: '/meu-site/'` (nome do repositório no GitHub Pages) e `appType: 'mpa'` (arquivo inexistente dá 404 de verdade). O `playwright.config.js` lê a base de lá.
+- `vite.config.js` define `base: '/relogio-ensaio/'` (nome do repositório no GitHub Pages) e `appType: 'mpa'` (arquivo inexistente dá 404 de verdade). O `playwright.config.js` lê a base de lá.
 
 ## Regras
 

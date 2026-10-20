@@ -1,6 +1,6 @@
 # Plano — site Calibre Norte (MVP)
 
-**Contexto:** página única de lançamento (docs/brief.md, docs/requisitos.md). Uma ação: lista de espera simulada. Base pronta (Vite, GSAP, git, `base: '/meu-site/'`). Sem bibliotecas extras nem CDN.
+**Contexto:** página única de lançamento (docs/brief.md, docs/requisitos.md). Uma ação: lista de espera simulada. Base pronta (Vite, GSAP, git, `base: '/relogio-ensaio/'`). Sem bibliotecas extras nem CDN.
 
 ## Seções
 1. **Hero:** nome, "mecânica à vista", `hero.webp`, botão da lista (visível em 390 px).
@@ -42,12 +42,12 @@ public/img/*.webp
 *Testar:* rolar para frente e para trás (o scrub reverte); redimensionar; DevTools → Rendering → `prefers-reduced-motion: reduce`: sem pin, imagem estática; console limpo.
 
 **4. Polimento e publicação (20 min):** alt, foco visível, contraste AA, termos proibidos, workflow do Pages (`actions/deploy-pages`).
-*Testar:* `npm run build` sai com 0; `npm run preview` em `/meu-site/` sem 404; buscar "luxo|exclusivo|promoção|imperdível|!!"; abrir a URL publicada.
+*Testar:* `npm run build` sai com 0; `npm run preview` em `/relogio-ensaio/` sem 404; buscar "luxo|exclusivo|promoção|imperdível|!!"; abrir a URL publicada.
 
 ## Riscos
 - **Caminho base:** imagens em `/img/...` dentro do JS dão 404 no Pages. Usar `import.meta.env.BASE_URL`.
 - **Pin no celular:** a barra do navegador muda a altura e a página pula. Usar `svh` e `ScrollTrigger.config({ ignoreMobileResize: true })`.
 - **Imagens desalinhadas:** a troca hero → explodido "pula".
 - **Imagem lazy acima do pin:** pode deslocar o ponto de início. Resolver com `width`/`height` e refresh.
-- **Pages:** o repositório deve se chamar `meu-site`; Settings → Pages → Source: GitHub Actions.
+- **Pages:** o repositório deve se chamar `relogio-ensaio`; Settings → Pages → Source: GitHub Actions.
 - **Pendências do brief:** sem resposta, os textos ficam "a confirmar".
