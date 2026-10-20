@@ -7,8 +7,19 @@ import './styles/base.css'
 // import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // gsap.registerPlugin(ScrollTrigger)
 
-// Cada seção ganha um arquivo em src/sections/ com uma função init. Exemplo:
-// import { initHero } from './sections/hero.js'
-// initHero()
-//
+import { init as initHero } from './sections/hero.js'
+import { init as initAbertura } from './sections/abertura.js'
+import { init as initMostrador } from './sections/mostrador.js'
+import { init as initPulseiras } from './sections/pulseiras.js'
+import { init as initNaCaixa } from './sections/na-caixa.js'
+import { init as initListaEspera } from './sections/lista-espera.js'
+
+// Cada seção tem um arquivo em src/sections/ com uma função init, na ordem da página.
+initHero()
+initAbertura()
+initMostrador()
+initPulseiras()
+initNaCaixa()
+initListaEspera()
+
 // Funções pequenas usadas por várias seções (ex.: "reduzir movimento ligado?") vão em src/lib/.
