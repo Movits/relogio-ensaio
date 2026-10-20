@@ -265,10 +265,36 @@ figcaption {
   position: relative;
 }
 
-.abertura__hero,
-.abertura__traco,
-.abertura__rotulo {
+.abertura__hero {
   display: none;
+}
+
+/* Traço e rótulo marcam o movimento no explodido; na composição estática ficam à mostra, já traçados */
+.abertura__traco {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--cor-verde-claro);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.abertura__rotulo {
+  display: block;
+  position: absolute;
+  top: 12.2%;
+  left: 66%;
+  transform: translateY(-50%);
+  padding: var(--espaco-1) var(--espaco-2);
+  border: 1px solid var(--cor-verde-claro);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-size: var(--texto-legenda);
 }
 
 .abertura--animada {
@@ -328,32 +354,9 @@ figcaption {
   will-change: transform, opacity;
 }
 
-/* Traço de SVG: o JS anima o stroke-dashoffset (pathLength="1" no HTML) */
+/* Traço de SVG: o JS anima o stroke-dashoffset (pathLength="1" no HTML); a animação parte do traço apagado */
 .abertura--animada .abertura__traco {
-  display: block;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: var(--cor-verde-claro);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-dasharray: 1;
   stroke-dashoffset: 1;
-}
-
-.abertura--animada .abertura__rotulo {
-  display: block;
-  position: absolute;
-  top: 12.2%;
-  left: 66%;
-  transform: translateY(-50%);
-  padding: var(--espaco-1) var(--espaco-2);
-  border: 1px solid var(--cor-verde-claro);
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
-  font-size: var(--texto-legenda);
 }
 
 /* Os 4 passos ocupam o mesmo lugar; o JS acende um de cada vez */
