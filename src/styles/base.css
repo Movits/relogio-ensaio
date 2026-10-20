@@ -29,6 +29,7 @@ h1,
 h2,
 h3 {
   font-family: var(--fonte-titulo);
+  font-stretch: var(--titulo-largura);
   line-height: 1.1;
 }
 

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estilo Calibre Norte</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="data:," />
+    <!-- Página de conferência: só existe no "npm run dev" (fora do build). Endereço: /relogio-ensaio/estilo.html -->
+    <style>
+      body { padding: var(--espaco-8) var(--espaco-4) var(--espaco-24); }
+      main { max-width: var(--largura-maxima); margin: 0 auto; display: grid; gap: var(--espaco-12); }
+      h1 { font-size: var(--texto-g); }
+      main section > h2 { font-size: var(--texto-m); margin-bottom: var(--espaco-4); }
+      .nota { color: var(--cor-texto-suave); font-size: var(--texto-legenda); }
+      .grade { display: grid; gap: var(--espaco-4); grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+      .amostra { background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--canto); overflow: hidden; }
+      .amostra .cor { height: 4rem; border-bottom: 1px solid var(--cor-borda); }
+      .amostra dl { margin: 0; padding: var(--espaco-3) var(--espaco-4); display: grid; gap: var(--espaco-1); font-size: var(--texto-legenda); }
+      .amostra dt { font-weight: 600; }
+      .amostra dd { margin: 0; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; }
+      .ok { color: var(--cor-verde-claro); }
+      .falha { color: var(--cor-erro); }
+      .tipo > * + * { margin-top: var(--espaco-4); }
+      .legenda { font-size: var(--texto-legenda); color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; }
+      .escala { display: grid; gap: var(--espaco-2); }
+      .escala div { display: flex; align-items: center; gap: var(--espaco-4); font-size: var(--texto-legenda); font-variant-numeric: tabular-nums; }
+      .escala i { display: block; height: var(--espaco-4); background: var(--cor-verde-claro); }
+      .botao { font: inherit; font-weight: 600; color: var(--cor-destaque-texto); background: var(--cor-destaque); border: 1px solid var(--cor-verde-claro); border-radius: var(--canto); padding: var(--espaco-3) var(--espaco-6); min-height: 3rem; cursor: pointer; transition: background var(--duracao) var(--curva); }
+      .botao:hover { filter: brightness(1.15); }
+      .campo { display: grid; gap: var(--espaco-2); max-width: 24rem; }
+      .campo input { font: inherit; color: var(--cor-texto); background: var(--cor-superficie); border: 1px solid var(--cor-borda); border-radius: var(--canto); padding: var(--espaco-3) var(--espaco-4); min-height: 3rem; }
+      .campo.erro input { border-color: var(--cor-erro); }
+      .campo .msg { color: var(--cor-erro); font-size: var(--texto-legenda); }
+      .linha { display: flex; flex-wrap: wrap; gap: var(--espaco-4); align-items: flex-start; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Estilo: direção Bancada</h1>
+        <p class="nota">Os valores vêm de src/styles/tokens.css. Os contrastes abaixo são calculados aqui, na hora, a partir das variáveis.</p>
+      </header>
+
+      <section aria-labelledby="t-cores">
+        <h2 id="t-cores">Cores</h2>
+        <div class="grade" id="cores"></div>
+        <p class="nota" id="resumo-contraste"></p>
+      </section>
+
+      <section aria-labelledby="t-tipo" class="tipo">
+        <h2 id="t-tipo">Tipografia</h2>
+        <p class="legenda">Títulos: Archivo, largura 125%. Texto: IBM Plex Sans.</p>
+        <p style="font-family: var(--fonte-titulo); font-stretch: var(--titulo-largura); font-size: var(--texto-display); line-height: 1.1; font-weight: 700">Mecânica à vista</p>
+        <h2 style="font-size: var(--texto-g)">Aço e verde, com 3 pulseiras</h2>
+        <p>O automático se enrola com o movimento do pulso. Uma massa oscilante gira, a mola-motriz acumula energia e o trem de engrenagens a entrega em passos regulares. É isso que você vê pelo fundo.</p>
+        <p class="legenda">Fig. 2 · Massa oscilante · Origem do movimento: a confirmar · 0123456789</p>
+      </section>
+
+      <section aria-labelledby="t-espaco">
+        <h2 id="t-espaco">Espaço (múltiplos de 4 px)</h2>
+        <div class="escala" id="escala"></div>
+      </section>
+
+      <section aria-labelledby="t-comp">
+        <h2 id="t-comp">Botão e campo</h2>
+        <div class="linha">
+          <button class="botao" type="button">Entrar na lista de espera</button>
+          <button class="botao" type="button" id="foco-demo">Foco (use a tecla Tab)</button>
+        </div>
+        <div class="linha" style="margin-top: var(--espaco-6)">
+          <label class="campo">
+            <span>E-mail</span>
+            <input type="email" placeholder="voce@exemplo.com" />
+          </label>
+          <label class="campo erro">
+            <span>E-mail com erro</span>
+            <input type="email" value="voce@" aria-invalid="true" />
+            <span class="msg" role="alert">Digite um e-mail completo, como voce@exemplo.com.</span>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import '/src/styles/tokens.css'
+      import '/src/styles/base.css'
+
+      const css = getComputedStyle(document.documentElement)
+      const v = (nome) => css.getPropertyValue(nome).trim()
+
+      const luz = (hex) => {
+        const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((x) => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4))
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+      }
+      const razao = (a, b) => {
+        const [x, y] = [luz(a), luz(b)].sort((m, n) => n - m)
+        return (x + 0.05) / (y + 0.05)
+      }
+      const fmt = (n) => n.toFixed(2).replace('.', ',')
+
+      // [variável, papel, contra qual variável, mínimo exigido]
+      const pares = [
+        ['--cor-texto', 'Texto', '--cor-fundo', 4.5],
+        ['--cor-texto-suave', 'Texto suave', '--cor-fundo', 4.5],
+        ['--cor-texto-suave', 'Texto suave na superfície', '--cor-superficie', 4.5],
+        ['--cor-borda', 'Borda', '--cor-fundo', 3],
+        ['--cor-borda', 'Borda na superfície', '--cor-superficie', 3],
+        ['--cor-destaque-texto', 'Texto do botão', '--cor-destaque', 4.5],
+        ['--cor-verde-claro', 'Verde claro (links, contorno)', '--cor-fundo', 4.5],
+        ['--cor-foco', 'Foco', '--cor-fundo', 3],
+        ['--cor-erro', 'Erro', '--cor-fundo', 4.5],
+        ['--cor-erro', 'Erro na superfície', '--cor-superficie', 4.5],
+      ]
+      const papeis = {
+        '--cor-fundo': 'Fundo da página',
+        '--cor-superficie': 'Blocos e campos',
+        '--cor-destaque': 'Verde do mostrador (botão)',
+      }
+      const nomes = ['--cor-fundo', '--cor-superficie', '--cor-texto', '--cor-texto-suave', '--cor-borda', '--cor-destaque', '--cor-destaque-texto', '--cor-verde-claro', '--cor-foco', '--cor-erro']
+
+      let falhas = 0
+      const linhas = (nome) => pares
+        .filter(([a]) => a === nome)
+        .map(([a, papel, b, minimo]) => {
+          const r = razao(v(a), v(b))
+          const passa = r >= minimo
+          if (!passa) falhas++
+          return `<dd class="${passa ? 'ok' : 'falha'}">${papel}: ${fmt(r)}:1 (mín. ${fmt(minimo)}) ${passa ? 'passa' : 'FALHA'}</dd>`
+        }).join('')
+
+      document.getElementById('cores').innerHTML = nomes.map((n) => `
+        <div class="amostra">
+          <div class="cor" style="background: var(${n})"></div>
+          <dl><dt>${n}</dt><dd>${v(n)}${papeis[n] ? ' · ' + papeis[n] : ''}</dd>${linhas(n)}</dl>
+        </div>`).join('')
+      document.getElementById('resumo-contraste').textContent =
+        falhas === 0 ? `${pares.length} pares conferidos: todos passam no AA.` : `${falhas} par(es) abaixo do mínimo.`
+
+      document.getElementById('escala').innerHTML = [1, 2, 3, 4, 6, 8, 12, 16, 24].map((n) =>
+        `<div><span style="width: 8rem">--espaco-${n}</span><i style="width: var(--espaco-${n})"></i><span>${n * 4} px</span></div>`).join('')
+    </script>
+  </body>
+</html>
