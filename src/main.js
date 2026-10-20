@@ -1,6 +1,7 @@
 // Ponto de entrada do site: o Vite começa por aqui e junta o resto.
 import './styles/tokens.css'
 import './styles/base.css'
+import './styles/secoes.css'
 
 // O GSAP já está instalado. Quando a primeira animação entrar, descomente:
 // import { gsap } from 'gsap'

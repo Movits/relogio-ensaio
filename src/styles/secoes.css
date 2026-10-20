@@ -1,0 +1,257 @@
+/*
+  Estilos das seções, mobile-first (390 px primeiro; os @media só ampliam).
+  Só tokens: nenhuma cor ou medida solta de design.
+*/
+
+/* Seções: o filete separa; o padding lateral centraliza no máximo de largura */
+main > section {
+  padding-block: var(--espaco-12);
+  padding-inline: max(var(--espaco-4), calc((100% - var(--largura-maxima)) / 2));
+  border-top: 1px solid var(--cor-borda);
+}
+
+main > section:first-child {
+  border-top: 0;
+}
+
+main > section > * + * {
+  margin-top: var(--espaco-8);
+}
+
+h2 {
+  font-size: var(--texto-g);
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+h3 {
+  font-size: var(--texto-m);
+  font-weight: 600;
+}
+
+/* Texto corrido */
+.texto > * + * {
+  margin-top: var(--espaco-4);
+}
+
+.texto--largo {
+  max-width: 40rem;
+}
+
+.eyebrow {
+  color: var(--cor-verde-claro);
+  font-size: var(--texto-legenda);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legenda,
+figcaption {
+  color: var(--cor-texto-suave);
+  font-size: var(--texto-legenda);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Imagens: moldura fina, como prancha técnica */
+figure {
+  margin: 0;
+}
+
+figure img {
+  width: 100%;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--canto);
+}
+
+figcaption {
+  margin-top: var(--espaco-2);
+}
+
+/* Texto + imagem: empilhados no celular, lado a lado no desktop */
+.par {
+  display: grid;
+  gap: var(--espaco-8);
+}
+
+/* Listas */
+.etapas,
+.detalhes {
+  margin-bottom: 0;
+  padding-left: var(--espaco-6);
+}
+
+.etapas li + li,
+.detalhes li + li {
+  margin-top: var(--espaco-2);
+}
+
+.etapas li::marker {
+  color: var(--cor-verde-claro);
+  font-variant-numeric: tabular-nums;
+}
+
+.detalhes {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detalhes li {
+  padding-left: var(--espaco-4);
+  border-left: 2px solid var(--cor-verde-claro);
+}
+
+/* Botão principal: verde do mostrador, contorno claro (o verde sozinho dá só 2,3:1 contra o fundo) */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: var(--espaco-3) var(--espaco-6);
+  border: 1px solid var(--cor-verde-claro);
+  border-radius: var(--canto);
+  background: var(--cor-destaque);
+  color: var(--cor-destaque-texto);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter var(--duracao) var(--curva);
+}
+
+.botao:hover {
+  filter: brightness(1.15);
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  gap: var(--espaco-6);
+  padding-top: var(--espaco-6);
+}
+
+.hero > * + * {
+  margin-top: 0;
+}
+
+.hero__texto > * + * {
+  margin-top: var(--espaco-4);
+}
+
+.hero h1 {
+  font-size: var(--texto-display);
+  font-weight: 800;
+  overflow-wrap: break-word;
+}
+
+.hero__promessa {
+  font-family: var(--fonte-titulo);
+  font-size: var(--texto-m);
+  font-weight: 600;
+}
+
+.hero__imagem {
+  order: -1;
+}
+
+/* Pulseiras */
+.pulseiras {
+  display: grid;
+  gap: var(--espaco-4);
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pulseiras li {
+  padding: var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--canto);
+  background: var(--cor-superficie);
+}
+
+.pulseiras li > * + * {
+  margin-top: var(--espaco-2);
+}
+
+/* Lista de espera */
+.formulario {
+  display: grid;
+  gap: var(--espaco-3);
+  max-width: 28rem;
+}
+
+.formulario label {
+  font-weight: 600;
+}
+
+.formulario input {
+  min-height: 3rem;
+  padding: var(--espaco-3) var(--espaco-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--canto);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font: inherit;
+}
+
+.formulario input[aria-invalid='true'] {
+  border-color: var(--cor-erro);
+}
+
+.status {
+  min-height: 1.6em;
+}
+
+.status[data-tipo='erro'] {
+  color: var(--cor-erro);
+}
+
+.status[data-tipo='ok'] {
+  color: var(--cor-verde-claro);
+}
+
+/* Rodapé */
+.rodape {
+  padding: var(--espaco-8) max(var(--espaco-4), calc((100% - var(--largura-maxima)) / 2));
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+  font-size: var(--texto-legenda);
+}
+
+/* Tablet e desktop */
+@media (min-width: 48rem) {
+  main > section {
+    padding-block: var(--espaco-24);
+  }
+
+  .botao {
+    width: auto;
+  }
+
+  .pulseiras {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .par {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .par--inverso > figure {
+    order: -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero {
+    grid-template-columns: 5fr 7fr;
+    align-items: center;
+    min-height: 100svh;
+    padding-block: var(--espaco-12);
+  }
+
+  .hero__imagem {
+    order: 0;
+  }
+}

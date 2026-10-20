@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Troque pelo nome e pela frase do site quando o tema for escolhido -->
-    <title>Meu site</title>
-    <meta name="description" content="Descrição curta do site (aparece no Google e ao compartilhar)." />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#111315" />
+    <title>Calibre Norte: relógio mecânico automático de aço e verde</title>
+    <meta name="description" content="Calibre Norte: relógio mecânico automático de aço, com mostrador verde e três pulseiras trocáveis. Entre na lista de espera." />
     <!-- Sem ícone por enquanto (o "data:," evita um 404 de favicon). Depois: public/favicon.svg -->
     <link rel="icon" href="data:," />
     <!-- Marca que o JavaScript rodou: o CSS só esconde algo para animar se o <html> tiver .js -->
@@ -13,25 +14,139 @@
   </head>
   <body>
     <main id="conteudo">
-      <section id="hero">
-        <h1>Calibre Norte</h1>
+      <section id="hero" class="hero" aria-labelledby="hero-titulo">
+        <div class="hero__texto">
+          <p class="eyebrow">Relógio mecânico automático</p>
+          <h1 id="hero-titulo">Calibre Norte</h1>
+          <p class="hero__promessa">Mecânica à vista.</p>
+          <p>Um relógio automático de aço, com mostrador verde e três pulseiras trocáveis, feito para quem gosta de ver como as coisas funcionam.</p>
+          <a class="botao" href="#lista-espera">Entrar na lista de espera</a>
+          <p class="legenda">Preço e data de lançamento: a confirmar.</p>
+        </div>
+        <figure class="hero__imagem">
+          <img src="/img/hero.webp" width="1600" height="900" fetchpriority="high"
+            alt="Relógio de aço com mostrador verde de acabamento radial, visto em ângulo sobre fundo preto." />
+        </figure>
       </section>
-      <section id="abertura">
-        <h2>O relógio por dentro</h2>
+
+      <section id="abertura" aria-labelledby="abertura-titulo">
+        <div class="par">
+          <div class="texto">
+            <p class="eyebrow">01 · Movimento</p>
+            <h2 id="abertura-titulo">O relógio por dentro</h2>
+            <p>O automático não usa pilha nem precisa de corda diária. Ele se enrola com o movimento do seu pulso.</p>
+            <ol class="etapas">
+              <li><strong>Massa oscilante.</strong> Gira quando você mexe o braço.</li>
+              <li><strong>Mola principal.</strong> Guarda essa energia.</li>
+              <li><strong>Engrenagens.</strong> Entregam a energia em passos regulares.</li>
+              <li><strong>Escape e balanço.</strong> Dividem o tempo. Os ponteiros mostram o resultado.</li>
+            </ol>
+            <p class="legenda">Origem do movimento do Calibre Norte: a confirmar.</p>
+          </div>
+          <figure>
+            <img src="/img/explodido.webp" width="1600" height="900" loading="lazy" decoding="async"
+              alt="Peças de um relógio mecânico separadas e alinhadas: cristal, mostrador escuro com ponteiros, movimento com engrenagens e rubis, caixa e fundo, em acabamento dourado." />
+            <figcaption>Fig. 2 · Por dentro do calibre. Ilustração em outro acabamento (dourado): a caixa do Calibre Norte é de aço.</figcaption>
+          </figure>
+        </div>
       </section>
-      <section id="mostrador">
-        <h2>Mostrador</h2>
+
+      <section id="mostrador" aria-labelledby="mostrador-titulo">
+        <div class="par par--inverso">
+          <div class="texto">
+            <p class="eyebrow">02 · Mostrador</p>
+            <h2 id="mostrador-titulo">Verde com raios de luz</h2>
+            <p>O mostrador tem acabamento radial: a luz corre pelo verde conforme você move o pulso. É um verde de fugir do preto e do azul de sempre.</p>
+            <ul class="detalhes">
+              <li>Acabamento radial, do centro para a borda</li>
+              <li>Índices facetados, que pegam a luz</li>
+              <li>Ponteiros afilados, fáceis de ler</li>
+            </ul>
+          </div>
+          <figure>
+            <img src="/img/mostrador.webp" width="1600" height="900" loading="lazy" decoding="async"
+              alt="Close do mostrador verde de acabamento radial, com índices facetados, ponteiros de horas e minutos e ponteiro fino de segundos." />
+            <figcaption>Fig. 3 · Detalhe do mostrador.</figcaption>
+          </figure>
+        </div>
       </section>
-      <section id="pulseiras">
-        <h2>Pulseiras</h2>
+
+      <section id="pulseiras" aria-labelledby="pulseiras-titulo">
+        <div class="texto texto--largo">
+          <p class="eyebrow">03 · Pulseiras</p>
+          <h2 id="pulseiras-titulo">Um relógio, três jeitos de usar</h2>
+          <p>Três pulseiras trocáveis mudam o visual do dia a dia ao social, sem comprar outro relógio.</p>
+        </div>
+        <ul class="pulseiras">
+          <li>
+            <h3>Dia a dia</h3>
+            <p>Pulseira de elos metálicos, a de uso comum.</p>
+            <p class="legenda">Material: a confirmar</p>
+          </li>
+          <li>
+            <h3>Social</h3>
+            <p>Pulseira marrom com costura clara, para camisa e reunião.</p>
+            <p class="legenda">Material: a confirmar</p>
+          </li>
+          <li>
+            <h3>Fim de semana</h3>
+            <p>Pulseira preta com sulcos, para o uso mais solto.</p>
+            <p class="legenda">Material: a confirmar</p>
+          </li>
+        </ul>
+        <div class="par">
+          <figure>
+            <img src="/img/pulseiras.webp" width="1600" height="900" loading="lazy" decoding="async"
+              alt="Três pulseiras lado a lado sobre pedra escura: uma marrom com costura clara, uma de elos metálicos e uma preta com sulcos." />
+            <figcaption>Fig. 4 · As três pulseiras.</figcaption>
+          </figure>
+          <figure>
+            <img src="/img/pulso.webp" width="1600" height="900" loading="lazy" decoding="async"
+              alt="Relógio de aço com mostrador verde no pulso, ao lado do punho de uma camisa branca." />
+            <figcaption>Fig. 5 · No pulso, com camisa social.</figcaption>
+          </figure>
+        </div>
       </section>
-      <section id="na-caixa">
-        <h2>Na caixa</h2>
+
+      <section id="na-caixa" aria-labelledby="na-caixa-titulo">
+        <div class="par par--inverso">
+          <div class="texto">
+            <p class="eyebrow">04 · Na caixa</p>
+            <h2 id="na-caixa-titulo">O que vem na caixa</h2>
+            <ul class="detalhes">
+              <li>1 relógio Calibre Norte, de aço, com mostrador verde</li>
+              <li>3 pulseiras trocáveis: Dia a dia, Social e Fim de semana</li>
+            </ul>
+          </div>
+          <figure>
+            <img src="/img/estojo.webp" width="1600" height="900" loading="lazy" decoding="async"
+              alt="Relógio de aço com mostrador verde sobre uma almofada de veludo, dentro de um estojo verde-escuro aberto." />
+            <figcaption>Fig. 6 · Imagem ilustrativa. O que vem na caixa é o que está na lista.</figcaption>
+          </figure>
+        </div>
       </section>
-      <section id="lista-espera">
-        <h2>Lista de espera</h2>
+
+      <section id="lista-espera" aria-labelledby="lista-espera-titulo">
+        <div class="texto texto--largo">
+          <p class="eyebrow">05 · Lista de espera</p>
+          <h2 id="lista-espera-titulo">Entre na lista de espera</h2>
+          <p>Deixe seu e-mail para ser avisado quando o Calibre Norte estiver disponível.</p>
+          <p class="legenda">Versão de demonstração: o e-mail não é enviado nem guardado.</p>
+        </div>
+        <form class="formulario" novalidate>
+          <label for="email">E-mail</label>
+          <input id="email" type="email" autocomplete="email" inputmode="email" required
+            placeholder="voce@exemplo.com" aria-describedby="status" />
+          <button class="botao" type="submit">Entrar na lista de espera</button>
+          <p id="status" class="status" role="status" aria-live="polite" data-status></p>
+        </form>
       </section>
     </main>
+
+    <footer class="rodape">
+      <p>Calibre Norte · Versão de demonstração. Preço, data de lançamento e especificações técnicas: a confirmar.</p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
