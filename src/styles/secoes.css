@@ -195,6 +195,11 @@ figcaption {
   font: inherit;
 }
 
+.formulario input::placeholder {
+  color: var(--cor-texto-suave);
+  opacity: 1;
+}
+
 .formulario input[aria-invalid='true'] {
   border-color: var(--cor-erro);
 }
